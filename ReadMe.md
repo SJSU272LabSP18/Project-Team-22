@@ -8,7 +8,7 @@
 ```
 ### Project Ideas:
 
-> 1. Sports Hub
+> 1. Sports Hub (Approved)
 
 Many students and young adults love to play soccer on the weekends with friends, but sometimes their friends are not free to play with them. This application will allow users to log in with their twitter credentials and gain access to local available games in the area. The application will have to store a database of all public soccer fields. The application will also track data (location and time) from Twitter hashtags of available games, which will then send notifications to available players within the area. The application will have an available games page which will show all available games within the area of the user. 
 
