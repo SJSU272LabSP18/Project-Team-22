@@ -1,0 +1,29 @@
+<ion-view title="Home" id="page2">
+  <ion-content padding="true" class="has-header">
+    <form id="home-form1" class="list">
+      <ion-radio id="home-radio1" name="chooseGame" class="gametype">Basketball</ion-radio>
+      <ion-radio id="home-radio2" name="chooseGame" class="gametype">Tennis</ion-radio>
+      <div class="spacer" style="width: 300px; height: 30px;"></div>
+      <label class="item item-select gameLevel" id="home-select1" name="gameLevel">
+        <span class="input-label">Select Level</span>
+        <select>
+          <option>Beginner</option>
+          <option>Medium</option>
+          <option>Pro</option>
+        </select>
+      </label>
+      <div class="spacer" style="height: 30px;"></div>
+      <label class="item item-input" id="home-input1" name="gameTime">
+        <span class="input-label">Choose Time</span>
+        <input type="time" placeholder="Enter Time">
+      </label>
+      <div class="spacer" style="height: 30px;"></div>
+      <label class="item item-input" id="home-input2" name="gameZip">
+        <span class="input-label">Zipcode</span>
+        <input type="number" placeholder="Enter Zip">
+      </label>
+      <div class="spacer" style="width: 300px; height: 38px;"></div>
+    </form>
+    <button id="home-button1" style="font-weight:600;" class="button button-balanced button-block">Find Matches</button>
+  </ion-content>
+</ion-view>
