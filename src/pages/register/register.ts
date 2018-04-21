@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, IonicPage } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import {RestProvider} from '../../providers/rest/rest';
 
 @IonicPage()
 @Component({
@@ -11,7 +12,7 @@ export class RegisterPage {
   createSuccess = false;
   registerCredentials = { email: '', password: '', name: '', phone: '' };
 
-  constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController) { }
+  constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, public restProvider: RestProvider) { }
 
   public register() {
     this.auth.register(this.registerCredentials).subscribe(success => {
@@ -25,6 +26,11 @@ export class RegisterPage {
       error => {
         this.showPopup("Error", error);
       });
+      this.restProvider.addUser(this.registerCredentials).then((result) => {
+  console.log(result);
+}, (err) => {
+  console.log(err);
+});
   }
 
   showPopup(title, text) {
