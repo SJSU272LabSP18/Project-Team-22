@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 /*
   Generated class for the RestProvider provider.
@@ -10,7 +11,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class RestProvider {
 
-apiUrl = 'https://jsonplaceholder.typicode.com';
+apiUrl = 'http://localhost:3000';
 
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
@@ -26,15 +27,14 @@ apiUrl = 'https://jsonplaceholder.typicode.com';
   });
 }
 
-addUser(data) {
-  
+signup(data) {
+
   return new Promise((resolve, reject) => {
-    this.http.post(this.apiUrl+'/users', JSON.stringify(data))
-      .subscribe(res => {
-        resolve(res);
-      }, (err) => {
-        reject(err);
-      });
+    this.http.post('http://localhost:3000/signup', data).pipe(
+      map(res => res.toString())
+    ).subscribe(response => {
+      console.log('POST Response:', response);
+    });
   });
 }
 

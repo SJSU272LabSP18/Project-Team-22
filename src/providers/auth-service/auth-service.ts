@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import {RestProvider} from '../../providers/rest/rest';
 
 export class User {
   name: string;
@@ -15,6 +16,8 @@ export class User {
 @Injectable()
 export class AuthServiceProvider {
   currentUser: User;
+
+  constructor(public restProvider:RestProvider){}
 
   public login(credentials) {
     if (credentials.email === null || credentials.password === null) {
@@ -35,7 +38,11 @@ export class AuthServiceProvider {
     if (credentials.email === null || credentials.password === null) {
       return Observable.throw("Please insert credentials");
     } else {
-      // At this point store the credentials to your backend!
+      this.restProvider.signup(credentials).then((result) => {
+        console.log(result);
+      }, (err) => {
+        console.log(err);
+      });
       return Observable.create(observer => {
         observer.next(true);
         observer.complete();

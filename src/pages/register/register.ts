@@ -26,11 +26,7 @@ export class RegisterPage {
       error => {
         this.showPopup("Error", error);
       });
-      this.restProvider.addUser(this.registerCredentials).then((result) => {
-  console.log(result);
-}, (err) => {
-  console.log(err);
-});
+
   }
 
   showPopup(title, text) {
