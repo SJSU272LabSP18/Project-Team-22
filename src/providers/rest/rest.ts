@@ -38,4 +38,14 @@ signup(data) {
   });
 }
 
+matchfind(data) {
+  return new Promise((resolve, reject) => {
+  this.http.post('http://localhost:3000/matches', data).pipe(
+    map(res => res.toString())
+  ).subscribe(response => {
+    console.log('POST Response:', response);
+  });
+});
+}
+
 }

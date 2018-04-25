@@ -6,10 +6,16 @@ import {RestProvider} from '../../providers/rest/rest';
 export class User {
   name: string;
   email: string;
+  sport: string;
+  level: string;
+  zipcode: string;
 
-  constructor(name: string, email: string) {
+  constructor(name: string, email: string, sport: string, level: string, zipcode: string) {
     this.name = name;
     this.email = email;
+    this.sport = sport;
+    this.level = level;
+    this.zipcode = zipcode;
   }
 }
 
@@ -50,8 +56,20 @@ export class AuthServiceProvider {
     }
   }
 
-  public getUserInfo() : User {
-    return this.currentUser;
+  public findmatch(credentials) {
+    if (credentials.sport === null || credentials.zipcode === null || credentials.level === null) {
+      return Observable.throw("Please insert credentials");
+    } else {
+      this.restProvider.matchfind(credentials).then((result) => {
+        console.log(result);
+      }, (err) => {
+        console.log(err);
+      });
+      return Observable.create(observer => {
+        observer.next(true);
+        observer.complete();
+      });
+    }
   }
 
   public logout() {

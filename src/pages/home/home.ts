@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, AlertController} from 'ionic-angular';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { RestProvider } from '../../providers/rest/rest';
 
@@ -10,27 +11,49 @@ import { RestProvider } from '../../providers/rest/rest';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  username = '';
-  email = '';
-  users: any;
+  createSuccess = false;
+  matchCredentials = { sport: '', level: '', time: '', zipcode: '' };
 
-  constructor(private nav: NavController, public restProvider: RestProvider, private auth: AuthServiceProvider) {
-    let info = this.auth.getUserInfo();
-    this.username = info['name'];
-    this.email = info['email'];
-    this.getUsers();
-  }
 
-  getUsers() {
-      this.restProvider.getUsers()
-      .then(data => {
-        this.users = data;
-        console.log(this.users);
-      });
-    }
+  constructor(private nav: NavController, public restProvider: RestProvider, public nacParams: NavParams, private alertCtrl: AlertController, private formBuilder: FormBuilder, private auth: AuthServiceProvider) { }
+
   public logout() {
     this.auth.logout().subscribe(succ => {
       this.nav.setRoot('LoginPage')
     });
+  }
+
+findmatch() {
+  this.nav.setRoot('MatchesPage')
+  this.auth.findmatch(this.matchCredentials).subscribe(success => {
+    if (success) {
+      this.createSuccess = true;
+      this.showPopup("Success", "Looking for Matches");
+    } else {
+      this.showPopup("Error", "Problem creating matches");
+    }
+  },
+    error => {
+      this.showPopup("Error", error);
+    });
+}
+
+
+  showPopup(title, text) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: text,
+      buttons: [
+        {
+          text: 'OK',
+          handler: data => {
+            if (this.createSuccess) {
+              this.nav.popToRoot();
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }
