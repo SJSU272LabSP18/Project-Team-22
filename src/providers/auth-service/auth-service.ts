@@ -6,16 +6,10 @@ import {RestProvider} from '../../providers/rest/rest';
 export class User {
   name: string;
   email: string;
-  sport: string;
-  level: string;
-  zipcode: string;
 
   constructor(name: string, email: string, sport: string, level: string, zipcode: string) {
     this.name = name;
     this.email = email;
-    this.sport = sport;
-    this.level = level;
-    this.zipcode = zipcode;
   }
 }
 
@@ -30,15 +24,25 @@ export class AuthServiceProvider {
       return Observable.throw("Please insert credentials");
     } else {
       return Observable.create(observer => {
-        // At this point make a request to your backend to make a real check!
-        //TODO: Connect to Database to Check true login
-        let access = (credentials.password === "pass" && credentials.email === "email");
-        this.currentUser = new User('Emma', 'emma@test.com');
-        observer.next(access);
-        observer.complete();
-      });
+          let access = (credentials.password === "pass" && credentials.email === "email");
+          this.currentUser = new User('Emma', 'emma@test.com');
+          observer.next(access);
+          observer.complete();
+        });
+//TODO: Uncomment for login backend
+        /*this.restProvider.login(credentials).then((result) => {
+          console.log(result);
+        }, (err) => {
+          console.log(err);
+        });
+        return Observable.create(observer => {
+          observer.next(true);
+          observer.complete();
+        });
+      }*/
     }
   }
+
 
   public register(credentials) {
     if (credentials.email === null || credentials.password === null) {

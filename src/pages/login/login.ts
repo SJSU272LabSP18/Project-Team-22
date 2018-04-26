@@ -29,6 +29,11 @@ export class LoginPage {
       error => {
         this.showError(error);
       });
+
+      //TODO: uncomment for backend code
+    /*  this.auth.login(this.registerCredentials).then((result)=>{
+        this.data = result;
+      });*/
   }
 
   showLoading() {

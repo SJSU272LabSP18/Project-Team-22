@@ -17,7 +17,7 @@ apiUrl = 'http://localhost:3000';
     console.log('Hello RestProvider Provider');
   }
 
-  getUsers() {
+/*  getUsers() {
   return new Promise(resolve => {
     this.http.get(this.apiUrl+'/users').subscribe(data => {
       resolve(data);
@@ -25,7 +25,7 @@ apiUrl = 'http://localhost:3000';
       console.log(err);
     });
   });
-}
+}*/
 
 signup(data) {
 
@@ -47,5 +47,16 @@ matchfind(data) {
   });
 });
 }
+
+//TODO: Uncomment for login backend
+/*login(data) {
+  return new Promise((resolve, reject) => {
+    this.http.post(apiUrl+'login', data).pipe(
+      map(res => res.toString())
+    ).subscribe(response => {
+      console.log('POST Response:', response);
+    });
+  });
+}*/
 
 }
