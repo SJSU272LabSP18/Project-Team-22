@@ -7,7 +7,7 @@ export class User {
   name: string;
   email: string;
 
-  constructor(name: string, email: string) {
+  constructor(name: string, email: string, sport: string, level: string, zipcode: string) {
     this.name = name;
     this.email = email;
   }
@@ -25,7 +25,7 @@ export class AuthServiceProvider {
     } else {
       return Observable.create(observer => {
           let access = (credentials.password === "pass" && credentials.email === "email");
-          this.currentUser = new User('Emma', 'emma@test.com');
+          this.currentUser = new User('Emma', 'emma@test.com', 'Tennis', 'Beginner', '12345');
           observer.next(access);
           observer.complete();
         });

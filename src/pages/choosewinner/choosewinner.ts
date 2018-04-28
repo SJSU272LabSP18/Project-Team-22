@@ -1,25 +1,23 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the ChoosewinnerPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { NavController, NavParams, IonicPage} from 'ionic-angular';
+import { RestProvider } from '../../providers/rest/rest';
 
 @IonicPage()
 @Component({
   selector: 'page-choosewinner',
   templateUrl: 'choosewinner.html',
 })
+
 export class ChoosewinnerPage {
+  winnerCredentials = {winner: ''};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+constructor(private nav: NavController, public restProvider: RestProvider, public nacParams: NavParams) { }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ChoosewinnerPage');
-  }
+public winner() {
+  this.nav.setRoot('StatsPage');
+}
 
+ionViewDidLoad() {
+  console.log('ionViewDidLoad ChoosewinnerPage');
+}
 }

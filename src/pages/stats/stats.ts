@@ -1,25 +1,33 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the StatsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { NavController, NavParams, IonicPage} from 'ionic-angular';
+import { RestProvider } from '../../providers/rest/rest';
 
 @IonicPage()
 @Component({
   selector: 'page-stats',
   templateUrl: 'stats.html',
 })
+
 export class StatsPage {
+  samples: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+constructor(private nav: NavController, public restProvider: RestProvider, public nacParams: NavParams) {
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad StatsPage');
-  }
+    this.samples =
+    [
+      {"badmintonWon" : "10",
+      "badmintonLost" : "7",
+      "tennisWon" : "13",
+      "tennisLost" : "14"},
+    ]
 
+   }
+
+public Home() {
+  this.nav.setRoot('HomePage')
+}
+
+ionViewDidLoad() {
+  console.log('ionViewDidLoad StatsPage');
+}
 }
