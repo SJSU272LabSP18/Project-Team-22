@@ -23,6 +23,10 @@ export class HomePage {
     });
   }
 
+  public stats() {
+    this.nav.push('StatsPage');
+  }
+
 findmatch() {
   this.nav.setRoot('MatchesPage')
   this.auth.findmatch(this.matchCredentials).subscribe(success => {
