@@ -38,7 +38,7 @@ export class AuthServiceProvider {
           console.log(err);
         });
         return Observable.create(observer => {
-          observer.next(access);
+          observer.next(true);
           observer.complete();
         });
     }
