@@ -12,13 +12,13 @@ import { RestProvider } from '../../providers/rest/rest';
 })
 export class HomePage {
   createSuccess = false;
-  useremail: string;
+  //useremail: string;
   matchCredentials = {sport: '', level: '', time: '', zipcode: '' };
 
 
   constructor(private nav: NavController, public restProvider: RestProvider, public nacParams: NavParams, private alertCtrl: AlertController, private formBuilder: FormBuilder, private auth: AuthServiceProvider) {
-  let info = this.auth.getUserInfo();
-  this.useremail = info['email'];
+  //let info = this.auth.getUserInfo();
+  //this.useremail = info['email'];
  }
 
   public logout() {
