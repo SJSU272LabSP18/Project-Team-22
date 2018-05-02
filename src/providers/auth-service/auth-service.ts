@@ -25,23 +25,22 @@ export class AuthServiceProvider {
     if (credentials.email === null || credentials.password === null) {
       return Observable.throw("Please insert credentials");
     } else {
-      return Observable.create(observer => {
-          let access = (credentials.password === "pass" && credentials.email === "email");
-          this.currentUser = new User('Emma', 'emma@test.com', 'pass');
-          observer.next(access);
-          observer.complete();
-        });
+      //return Observable.create(observer => {
+      //    let access = (credentials.password === "pass" && credentials.email === "email");
+      //    this.currentUser = new User('Emma', 'emma@test.com', 'pass');
+      //    observer.next(access);
+      //    observer.complete();
+      //  });
 //TODO: Uncomment for login backend
-        /*this.restProvider.login(credentials).then((result) => {
+        this.restProvider.login(credentials).then((result) => {
           console.log(result);
         }, (err) => {
           console.log(err);
         });
         return Observable.create(observer => {
-          observer.next(true);
+          observer.next(access);
           observer.complete();
         });
-      }*/
     }
   }
 

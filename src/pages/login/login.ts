@@ -22,6 +22,7 @@ export class LoginPage {
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
         this.nav.setRoot('HomePage');
+        this.data = result;
       } else {
         this.showError("Access Denied");
       }
@@ -29,11 +30,6 @@ export class LoginPage {
       error => {
         this.showError(error);
       });
-
-      //TODO: uncomment for backend code
-    /*  this.auth.login(this.registerCredentials).then((result)=>{
-        this.data = result;
-      });*/
   }
 
   showLoading() {
