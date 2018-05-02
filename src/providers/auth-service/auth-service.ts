@@ -6,10 +6,12 @@ import {RestProvider} from '../../providers/rest/rest';
 export class User {
   name: string;
   email: string;
+  password: string;
 
-  constructor(name: string, email: string, sport: string, level: string, zipcode: string) {
+  constructor(name: string, email: string, password: string) {
     this.name = name;
     this.email = email;
+    this.password = password;
   }
 }
 
@@ -25,7 +27,7 @@ export class AuthServiceProvider {
     } else {
       return Observable.create(observer => {
           let access = (credentials.password === "pass" && credentials.email === "email");
-          this.currentUser = new User('Emma', 'emma@test.com', 'Tennis', 'Beginner', '12345');
+          this.currentUser = new User('Emma', 'emma@test.com', 'pass');
           observer.next(access);
           observer.complete();
         });
@@ -59,6 +61,10 @@ export class AuthServiceProvider {
       });
     }
   }
+
+ public getUserInfo() : User {
+   return this.currentUser;
+ }
 
   public findmatch(credentials) {
     if (credentials.sport === null || credentials.zipcode === null || credentials.level === null) {
