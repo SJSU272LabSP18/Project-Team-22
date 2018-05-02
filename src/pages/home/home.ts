@@ -13,7 +13,7 @@ import { RestProvider } from '../../providers/rest/rest';
 export class HomePage {
   createSuccess = false;
   useremail: string;
-  matchCredentials = {email: '', sport: '', level: '', time: '', zipcode: '' };
+  matchCredentials = {sport: '', level: '', time: '', zipcode: '' };
 
 
   constructor(private nav: NavController, public restProvider: RestProvider, public nacParams: NavParams, private alertCtrl: AlertController, private formBuilder: FormBuilder, private auth: AuthServiceProvider) {
@@ -32,8 +32,8 @@ export class HomePage {
   }
 
 findmatch() {
-  let info = this.auth.getUserInfo();
-  this.matchCredentials.email = info['email'];
+//  let user = this.auth.getUserInfo();
+  //this.matchCredentials.email = info['email'];
   this.nav.setRoot('MatchesPage')
   this.auth.findmatch(this.matchCredentials).subscribe(success => {
     if (success) {
