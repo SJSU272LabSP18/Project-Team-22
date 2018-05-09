@@ -7,11 +7,13 @@ export class User {
   name: string;
   email: string;
   password: string;
+  phone: number;
 
-  constructor(name: string, email: string, password: string) {
+  constructor(name: string, email: string, password: string, phone: number) {
     this.name = name;
     this.email = email;
     this.password = password;
+    this.phone = phone;
   }
 }
 
@@ -25,14 +27,14 @@ export class AuthServiceProvider {
     if (credentials.email === null || credentials.password === null) {
       return Observable.throw("Please insert credentials");
     } else {
-      //return Observable.create(observer => {
-      //    let access = (credentials.password === "pass" && credentials.email === "email");
-      //    this.currentUser = new User('Emma', 'emma@test.com', 'pass');
-      //    observer.next(access);
-      //    observer.complete();
-      //  });
+      return Observable.create(observer => {
+          let access = (credentials.password === "pass" && credentials.email === "email");
+          this.currentUser = new User('Emma', 'emma@test.com', 'pass');
+          observer.next(access);
+          observer.complete();
+        });
 //TODO: Uncomment for login backend
-        this.restProvider.login(credentials).then((result) => {
+      /*this.restProvider.login(credentials).then((result) => {
           console.log(result);
         }, (err) => {
           console.log(err);
@@ -40,7 +42,7 @@ export class AuthServiceProvider {
         return Observable.create(observer => {
           observer.next(true);
           observer.complete();
-        });
+        });*/
     }
   }
 
@@ -62,7 +64,7 @@ export class AuthServiceProvider {
   }
 
  public getUserInfo() : User {
-   return this.currentUser;
+   return this.currentUser.email;
  }
 
   public findmatch(credentials) {

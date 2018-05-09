@@ -13,13 +13,11 @@ import { RestProvider } from '../../providers/rest/rest';
 export class HomePage {
   createSuccess = false;
   //useremail: string;
-  matchCredentials = {sport: '', level: '', time: '', zipcode: '' };
+  matchCredentials = {email: '', sport: '', level: '', time: '', zipcode: '' };
 
 
-  constructor(private nav: NavController, public restProvider: RestProvider, public nacParams: NavParams, private alertCtrl: AlertController, private formBuilder: FormBuilder, private auth: AuthServiceProvider) {
-  //let info = this.auth.getUserInfo();
-  //this.useremail = info['email'];
- }
+  constructor(private nav: NavController, public restProvider: RestProvider,
+    public nacParams: NavParams, private alertCtrl: AlertController, private formBuilder: FormBuilder, private auth: AuthServiceProvider) {}
 
   public logout() {
     this.auth.logout().subscribe(succ => {
@@ -32,8 +30,7 @@ export class HomePage {
   }
 
 findmatch() {
-//  let user = this.auth.getUserInfo();
-  //this.matchCredentials.email = info['email'];
+  //let this.matchCredentials.email = this.auth.getUserInfo();
   this.nav.setRoot('MatchesPage')
   this.auth.findmatch(this.matchCredentials).subscribe(success => {
     if (success) {

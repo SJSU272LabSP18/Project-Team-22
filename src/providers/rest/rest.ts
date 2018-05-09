@@ -49,7 +49,7 @@ matchfind(data) {
 }
 
 //TODO: Uncomment for login backend
-login(data) {
+/*login(data) {
   return new Promise((resolve, reject) => {
     this.http.post(apiUrl+'login', data).pipe(
       map(res => res.toString())
@@ -57,6 +57,6 @@ login(data) {
       console.log('POST Response:', response);
     });
   });
-}
+}*/
 
 }
