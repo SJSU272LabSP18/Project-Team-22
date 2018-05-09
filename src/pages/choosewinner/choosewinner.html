@@ -21,6 +21,17 @@
                   </ion-select>
             </ion-item>
 
+            <ion-item>
+              <ion-label> What would you rate your partner? </ion-label>
+                  <ion-select [(ngModel)]="winnerCredentials.oppRating" name="ratingOpponent" required>
+                    <ion-option value="one">1</ion-option>
+                    <ion-option value="two">2</ion-option>
+                    <ion-option value="three">3</ion-option>
+                    <ion-option value="four">4</ion-option>
+                    <ion-option value="five">5</ion-option>
+                  </ion-select>
+            </ion-item>
+
           </ion-list>
         </ion-col>
       </ion-row>
@@ -30,26 +41,6 @@
           <button ion-button class="submit-btn" full type="submit" [disabled]="!winnerForm.form.valid">See your Progress</button>
           </ion-col>
         </ion-row>
-    <!--<ion-row>
-      <ion-col>
-        <ion-list radio-group [(ngModel)]="winner">
-          <ion-item>
-            <ion-label>You</ion-label>
-            <ion-radio value="you" checked></ion-radio>
-          </ion-item>
-          <ion-item>
-              <ion-label>Opponent</ion-label>
-              <ion-radio value="opponent"></ion-radio>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-          <form (ngSubmit)="winner()" #matchForm="ngForm">
-              <ion-row>
-                 <ion-col class="match-col">
-                 <button ion-button class="submit-btn" full type="submit" >Show Stats</button>
-                 </ion-col>
-               </ion-row>-->
 
     </form>
   </div>

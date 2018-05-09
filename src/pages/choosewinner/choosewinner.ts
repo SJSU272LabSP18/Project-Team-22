@@ -9,7 +9,7 @@ import { RestProvider } from '../../providers/rest/rest';
 })
 
 export class ChoosewinnerPage {
-  winnerCredentials = {winner: ''};
+  winnerCredentials = {winner: '', oppRating: ''};
 
 constructor(private nav: NavController, public restProvider: RestProvider, public nacParams: NavParams) { }
 

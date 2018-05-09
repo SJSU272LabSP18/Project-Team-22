@@ -63,9 +63,9 @@ export class AuthServiceProvider {
     }
   }
 
- public getUserInfo() : User {
+/* public getUserInfo() : User {
    return this.currentUser.email;
- }
+ }*/
 
   public findmatch(credentials) {
     if (credentials.sport === null || credentials.zipcode === null || credentials.level === null) {
