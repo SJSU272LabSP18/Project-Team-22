@@ -15,10 +15,10 @@ constructor(private nav: NavController, public restProvider: RestProvider, publi
 
     this.samples =
     [
-      {"badmintonWon" : "10",
-      "badmintonLost" : "7",
-      "tennisWon" : "13",
-      "tennisLost" : "14"},
+      {"badmintonWon" : "0",
+      "badmintonLost" : "0",
+      "tennisWon" : "1",
+      "tennisLost" : "0"}
     ]
 
    }

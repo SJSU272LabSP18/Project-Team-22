@@ -29,7 +29,7 @@ export class AuthServiceProvider {
     } else {
       return Observable.create(observer => {
           let access = (credentials.password === "pass" && credentials.email === "email");
-          this.currentUser = new User('Emma', 'emma@test.com', 'pass');
+          this.currentUser = new User('Emma', 'emma@test.com', 'pass', 1234);
           observer.next(access);
           observer.complete();
         });

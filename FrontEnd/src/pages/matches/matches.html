@@ -7,12 +7,14 @@
 <ion-content class="matches" padding>
   <h3>Hey, Here you go!</h3>
   <hr>
-
   <ion-list>
     <ion-item *ngFor="let item of samples">
-      {{item.Date}}
-      {{item.Time}}
-      {{item.Data}}
+        <h2>{{item.Opponent}}</h2>
+         <h2>{{item.Level}}</h2>
+         <h2>{{item.Rating}}</h2>
+         <h2>{{item.Time}}</h2>
+         <h2>{{item.Place}}</h2>
+         <img src="../../assets/imgs/map_location.JPG" alt="Google Maps">
     </ion-item>
   </ion-list>
 

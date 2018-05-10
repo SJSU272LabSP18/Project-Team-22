@@ -14,17 +14,12 @@ constructor(private nav: NavController, public restProvider: RestProvider, publi
 
     this.samples =
     [
-      {"Date" : "Thursday 16 Mar - ",
-      "Data" : "Harshrajsinh Rathod",
-      "Time" : "6:29 pm - "},
-
-      {"Date" : "Thursday 17 Apr - ",
-      "Data" : "Sunil Lalwani",
-      "Time" : "7:30 pm - "},
-
-      {"Date" : "Thursday 18 May - ",
-      "Data" : "Emma Peatfield",
-      "Time" : "8:31 pm - "},
+      {"Opponent" : "With (Stuart Smith) ",
+      "Rating" : "Whose ratings are 4.3/5",
+      "Level" : "Who Is (Tennis - Advanced)",
+      "Time" : "At (10:30 AM)",
+      "Place" : "in (Tower Hall Garden - SJSU - 95112)"
+      }
     ]
    }
 
